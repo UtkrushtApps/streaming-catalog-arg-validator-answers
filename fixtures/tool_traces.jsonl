@@ -1,0 +1,9 @@
+{"note": "clean title query -> should validate and return Inception", "user": "is Inception available?", "raw_args": {"query": "Inception"}, "expect": "ok"}
+{"note": "clean genre filter -> valid, lowercased genre", "user": "any sci-fi to watch?", "raw_args": {"query": "", "genre": "Sci-Fi"}, "expect": "error_blank_query"}
+{"note": "genre-only intent still needs a query; blank query rejected", "user": "show me action movies", "raw_args": {"query": "   ", "genre": "action"}, "expect": "error_blank_query"}
+{"note": "unsupported genre must be rejected", "user": "any documentaries?", "raw_args": {"query": "the", "genre": "documentary"}, "expect": "error_bad_genre"}
+{"note": "non-string query is invalid", "user": "find 12345", "raw_args": {"query": 12345}, "expect": "error_type"}
+{"note": "stray key must be rejected", "user": "is Interstellar available?", "raw_args": {"query": "Interstellar", "include_unreleased": true}, "expect": "error_extra_key"}
+{"note": "valid query plus valid genre", "user": "is The Dark Knight an action film I can watch?", "raw_args": {"query": "Dark Knight", "genre": "action"}, "expect": "ok"}
+{"note": "non-dict args are invalid", "user": "garbled", "raw_args": "Inception", "expect": "error_type"}
+
